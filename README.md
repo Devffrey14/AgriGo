@@ -41,7 +41,7 @@ Installation & Setup
 Prerequisites
 Node.js (for React frontend)
 
-Python 3.x (for Flask backend)
+Python 3.11 (for Flask backend)
 
 Backend Setup
 Navigate to the server directory: cd server
