@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# AGRI-GO: LOCAL HOST DEPLOYMENT GUIDE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This guide provides step-by-step instructions for running the **Agri-GO** platform locally on your machine for testing, development, and offline evaluation.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## SYSTEM ARCHITECTURE OVERVIEW
+* **Frontend:** React.js / Vite (Runs on `http://localhost:3000` or `http://localhost:5173`)
+* **Backend API & AI Engine:** Python Flask, TensorFlow / Keras (Runs on `http://127.0.0.1:5000`)
+* **Database:** SQLite (Local file-based database)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## PREREQUISITES
+Ensure you have the following installed on your local machine:
+* **Node.js** (v16+ recommended) and npm
+* **Python** (v3.8 or v3.9+ recommended for TensorFlow compatibility)
+* **Git**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## STEP 1: CLONE REPOSITORY
+Clone the project repository and navigate into the root directory:
+```bash
+git clone [https://github.com/your-username/agri-go.git](https://github.com/your-username/agri-go.git)
+cd agri-go
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+STEP 2: BACKEND & AI ENGINE SETUP (Flask)
+Navigate to the backend directory:
 
-### `npm run build`
+Bash
+cd server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create and activate a Python virtual environment:
+python -m venv venv
+venv\Scripts\activate
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Windows:
+Bash
+python -m venv venv
+venv\Scripts\activate
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+macOS / Linux:
+Bash
+python3 -m venv venv
+source venv/bin/activate
 
-### `npm run eject`
+Install required Python packages:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Bash
+pip install --upgrade pip
+pip install -r requirements.txt
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Run the Flask development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Bash
+python app.py
+The backend API will start running locally at http://127.0.0.1:5000.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+STEP 3: FRONTEND SETUP (React)
 
-## Learn More
+Open a new terminal window/tab, navigate to the frontend directory from the project root:
+Bash
+cd client
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Install node dependencies:
+Bash
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Configure the local environment variable:
+Create a .env.local file in the frontend root directory and point it to your local backend:
 
-### Code Splitting
+Code snippet
+REACT_APP_API_BASE_URL=[http://127.0.0.1:5000](http://127.0.0.1:5000)
+# OR if using Vite:
+VITE_API_BASE_URL=[http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Start the frontend development server:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Bash
+npm run dev
+# OR if using standard React scripts:
+npm start
+The frontend client will open or run locally at http://localhost:3000 or http://localhost:5173.
