@@ -1,0 +1,108 @@
+/* Custom CSS Variables for AgriGo Branding */
+:root {
+  --agri-green: #22c55e;
+  --agri-dark: #0f172a;
+  --agri-slate: #f8fafc;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* Fixes unwanted horizontal scrolling on mobile */
+  overflow-x: hidden; 
+  background-color: var(--agri-slate);
+  
+  /* Modern Font Stack */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Smooth scrolling for internal links */
+  scroll-behavior: smooth;
+}
+
+/* Ensure images don't break layouts on small screens */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Code styling for your technical reports/logs */
+code {
+  font-family: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* Mobile-First Responsive Adjustments */
+@media (max-width: 768px) {
+  /* Increase touch targets for mobile farmers */
+  button, a {
+    min-height: 44px;
+  }
+  
+  /* Prevents text from becoming too small on high-res mobile phones */
+  body {
+    font-size: 16px;
+  }
+}
+
+/* High-Tech Laser Scan Animation */
+@keyframes scan-laser {
+  0% { 
+    top: 0%; 
+    opacity: 0; 
+    transform: scaleX(0.5); 
+  }
+  10% { 
+    opacity: 1; 
+    transform: scaleX(1); 
+  }
+  50% {
+    filter: brightness(1.5) blur(1px);
+  }
+  90% { 
+    opacity: 1; 
+    transform: scaleX(1); 
+  }
+  100% { 
+    top: 100%; 
+    opacity: 0; 
+    transform: scaleX(0.5); 
+  }
+}
+
+/* The Beam Style */
+.animate-scan {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  /* Multi-layered gradient for a "glow" effect */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(34, 197, 94, 0.8), /* Agri-Go Green */
+    #4ade80,               /* Bright Center */
+    rgba(34, 197, 94, 0.8),
+    transparent
+  );
+  box-shadow: 0 0 15px 2px rgba(74, 222, 128, 0.5);
+  animation: scan-laser 2.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 30;
+}
+
+/* Optional: Add a subtle pulse to the image during scan */
+.scanning-pulse {
+  animation: pulse-opacity 2.2s infinite ease-in-out;
+}
+
+@keyframes pulse-opacity {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}

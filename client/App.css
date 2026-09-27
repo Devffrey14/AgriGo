@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+  /* Ensure the app always fills the viewport width without horizontal scroll */
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.App-logo {
+  /* Adjusted for better mobile scaling */
+  height: 25vmin; 
+  pointer-events: none;
+  margin-bottom: 2rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #0f172a; /* Changed to AgriGo Dark Slate */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Dynamic font sizing: stays readable on mobile, scales on PC */
+  font-size: calc(14px + 1vmin);
+  color: white;
+  padding: 20px;
+}
+
+.App-link {
+  color: #22c55e; /* AgriGo Green */
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+}
+
+.App-link:hover {
+  opacity: 0.8;
+}
+
+/* --- ADDED RESPONSIVE FEATURES --- */
+
+/* Utility for mobile-friendly containers */
+.container-responsive {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Scanner Animation for your Disease Detector */
+@keyframes scan {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(224px); opacity: 0; } /* Matches your 224px image height */
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile Adjustments (Phones) */
+@media (max-width: 640px) {
+  .App-header {
+    padding: 40px 15px;
+    justify-content: flex-start; /* Better for scrolling on small screens */
+  }
+  
+  .App-logo {
+    height: 30vh; /* Better vertical presence on mobile */
+  }
+}
